@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Video</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <video id="fullscreen-video" autoplay controls>
+    <!-- Replace 'path_to_your_video.mp4' with the path to your video file -->
+    <source src="intro.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById("fullscreen-video");
+
+      // Function to navigate to the ctf.html page
+      function navigateToCTFPage() {
+        window.location.href = "ctf.html";
+      }
+
+      // Listen for the 'ended' event on the video element
+      video.addEventListener("ended", function() {
+        navigateToCTFPage();
+      });
+
+      // Enter full-screen mode when the page loads
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>
